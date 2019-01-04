@@ -21,8 +21,14 @@
 public class DatabaseApplication {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		//Ask how many new users to add
+		//System.out.println("How many new students do you wish to add?");
+		
+		// Create n number of students
+		Student student1 = new Student();
+		
+		
 	}
 
 }
