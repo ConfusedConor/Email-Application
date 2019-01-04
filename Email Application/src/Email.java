@@ -1,6 +1,11 @@
 import java.util.Scanner;
 
 public class Email {
+	/** These class variables are all private which allows for Encapsulation
+	 *   which is a key feature of Object Oriented Programming.
+	 *   For such a simple project this is kind of unnecessary.
+	 *   
+	 */
 	private String firstname;
 	private String lastname;
 	private String password;
