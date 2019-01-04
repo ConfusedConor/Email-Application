@@ -68,4 +68,19 @@ public class Email {
 	public void changePassword(String password) {
 		this.password = password;
 	}
+	// Getters - Mailbox Capacity
+	public int getMailboxCapacity() {return mailboxCapacity;}
+	public String getAlternateEmail() {return alternateEmail;}
+	public String getPassword() {return password;}
+	
+	//Give all Email info method - Prints all Email account info
+	public void showAllInfo() {
+		System.out.println("Email account details for "+this.firstname+" "+ this.lastname+":");
+		System.out.println("Display Name:    "+this.firstname+ " "+ this.lastname);
+		System.out.println("Email address:   "+this.email);
+		System.out.println("Password:        "+this.password);
+		System.out.println("Alternate Email: "+this.alternateEmail);
+		System.out.println("Mailbox Capac. : "+this.mailboxCapacity);
+	}
+	
 }
