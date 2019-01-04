@@ -4,10 +4,12 @@ public class Email {
 	private String firstname;
 	private String lastname;
 	private String password;
+	private String email;
 	private String department;
 	private int passwordLengthDefault = 8;
-	private int mailboxCapacity;
+	private int mailboxCapacity = 500;
 	private String alternateEmail;
+	private String company = "examplesoft";
 	
 	//Constructor to receive first name and last name.
 	public Email(String firstname, String lastname) {
@@ -15,11 +17,18 @@ public class Email {
 		this.lastname = lastname;
 		System.out.println("Email created for "+this.firstname+" "+this.lastname);
 		// Call a method asking for the department
-		this.department = setDepartment();
-		System.out.println(this.department);
+			this.department = setDepartment();
+			//System.out.println(this.department);
+				// Clearing out non-departments from department variable
+				if (this.department == "No Department Set" || this.department == "No valid department set, None set as default option") {
+					this.department = "";
+				}
 		// Call a method to return a random password
-		this.password = randomPassword(passwordLengthDefault);
-		System.out.println("Password is: "+this.password);
+			this.password = randomPassword(passwordLengthDefault);
+			//System.out.println("Password is: "+this.password);
+		// Combine elements to generate email
+			this.email = firstname.toLowerCase()+"."+lastname.toLowerCase()+"@"+department+company+".com";
+			System.out.println(this.email);
 	}
 	// Ask for the department
 	private String setDepartment() {
@@ -28,9 +37,9 @@ public class Email {
 		int depChoice = in.nextInt();
 		in.close();
 		switch(depChoice) {
-			case 1: return "Sales";
-			case 2: return "Development";
-			case 3: return "Accounting";
+			case 1: return "sales.";
+			case 2: return "development.";
+			case 3: return "accounting.";
 			case 0: return "No Department Set";
 			default: return "No valid department set, None set as default option";
 		}
@@ -47,8 +56,16 @@ public class Email {
 	}
 	
 	// Set mailbox capacity
-	
+	public void setMailboxCapacity(int capacity) {
+		this.mailboxCapacity = capacity;
+	}
 	// Set alternate email
+	public void setAlternateEmail(String altEmail) {
+		this.alternateEmail = altEmail;
+	}
 	
 	// Change the password
+	public void changePassword(String password) {
+		this.password = password;
+	}
 }
