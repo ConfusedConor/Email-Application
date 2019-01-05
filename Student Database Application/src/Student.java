@@ -5,7 +5,7 @@ public class Student {
 private String firstname;
 private String lastname;
 private int year;
-private double totalCourseCosts = 0;
+private int totalCourseCosts = 0;
 private String uniqueID;
 private String coursesEnrolled = "";
 private static int costOfCourse = 600;
@@ -23,6 +23,8 @@ public Student() {
 	//Closing scanners caused issues. So currently commented out
 	//in.close();
 	setID();
+	enroll();
+	payTuition();
 }
 
 // Generate Student ID
@@ -32,33 +34,47 @@ private void setID() {
 	//Incriment ID so each student has a unique value
 	id++;
 }
-// Set student balance
 
 // Enroll in courses
 public void enroll() {
 	//Create a loop with an exit option (Q)
 	do {
 		System.out.println("Enter Course to enroll, or 'Q' to quit: ");
-		Scanner enroll = new Scanner(System.in);
-		enroll.useDelimiter("\\n");
-		String course = enroll.nextLine();
+		Scanner in = new Scanner(System.in);
+		in.useDelimiter("\\n");
+		String course = in.nextLine();
 		if (!course.equalsIgnoreCase("Q")) {
 			coursesEnrolled = coursesEnrolled+"\n"+course;
 			totalCourseCosts = totalCourseCosts + costOfCourse;
 		}
 		else {break;}
 	}while(1 != 0);
-	
-	//Print it out
-	System.out.println("Enrolled in: "+coursesEnrolled);
-	System.out.println("Tuition for these courses will cost: £"+totalCourseCosts);
-	//enroll.close();
 }
+
+// View balance
+public void viewBalance() {
+	System.out.println("Your balance due is: £"+totalCourseCosts);
+}
+
 // Pay tuition
+public void payTuition() {
+	Scanner in = new Scanner(System.in);
+	viewBalance();
+	System.out.println("Enter your payment");
+	System.out.print("£");
+	int payment = in.nextInt();
+	totalCourseCosts = totalCourseCosts - payment;
+	System.out.println("Thank you for your payment of £"+payment);
+	viewBalance();
+}
 
 // Show Status of student
 public String showStudent() {
-	return firstname + " " + lastname + ".\nYear of Study: "+year+".\nStudentID: "+uniqueID;
+	return "Name: " + firstname + " " + lastname + 
+			".\nYear of Study: "+year+
+			".\nStudentID: "+uniqueID + 
+			"\nCourses Enrolled: "+coursesEnrolled +
+			"\nCurrent Balance due: £"+ totalCourseCosts;
 }
 
 }

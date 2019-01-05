@@ -27,7 +27,7 @@ public class DatabaseApplication {
 		
 		// Create n number of students
 		Student student1 = new Student();
-		student1.enroll();
+		student1.showStudent();
 		
 	}
 
