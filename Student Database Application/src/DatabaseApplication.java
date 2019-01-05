@@ -27,6 +27,7 @@ public class DatabaseApplication {
 		
 		// Create n number of students
 		Student student1 = new Student();
+		System.out.println(student1.showStudent());
 		
 		
 	}

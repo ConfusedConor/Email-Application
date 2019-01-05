@@ -6,10 +6,10 @@ private String firstname;
 private String lastname;
 private int year;
 private double balance;
-private int uniqueID;
+private String uniqueID;
 private String coursesEnrolled;
-private int costOfCourse = 600;
-
+private static int costOfCourse = 600;
+private static int id = 1000;
 // Constructors for Student : Prompt user to enter a name and year
 public Student() {
 	Scanner in = new Scanner(System.in);
@@ -20,11 +20,15 @@ public Student() {
 	System.out.println("Enter Year of Study:\n(1) for 1st Year\n(2)for 2nd Year\n(3) for 3rd Year\n(4) for 4th Year \n(5) for 5th Year\n(6) for Any other option eg. PostGrad/ Masters/Doctorate");
 	this.year= in.nextInt();
 	in.close();
+	setID();
 }
 
 // Generate Student ID
-private void generateStudentID (int gradeLevel) {
-	
+private void setID() {
+	//Grade year + ID
+	uniqueID =  year+""+id;
+	//Incriment ID so each student has a unique value
+	id++;
 }
 // Set student balance
 
@@ -33,5 +37,8 @@ private void generateStudentID (int gradeLevel) {
 // Pay tuition
 
 // Show Status of student
+public String showStudent() {
+	return firstname + " " + lastname + ".\nYear of Study: "+year+".\nStudentID: "+uniqueID;
+}
 
 }
