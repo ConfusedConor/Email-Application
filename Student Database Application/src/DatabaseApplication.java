@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**	
  * For this application I will be taking the role of a Database Admin
  * for a University, where I need to create an application to manage student
@@ -23,11 +25,17 @@ public class DatabaseApplication {
 	public static void main(String[] args) {
 		
 		//Ask how many new users to add
-		//System.out.println("How many new students do you wish to add?");
+		System.out.println("How many new students do you wish to add?");
+		Scanner in = new Scanner(System.in);
+		int numOfStudents = in.nextInt();
+		Student[] students = new Student[numOfStudents];
 		
 		// Create n number of students
-		Student student1 = new Student();
-		student1.showStudent();
+		for (int n = 0; n< numOfStudents; n++) {
+		students[n] = new Student();
+		students[n].showStudent();
+		}
+		
 		
 	}
 
