@@ -5,9 +5,9 @@ public class Student {
 private String firstname;
 private String lastname;
 private int year;
-private double balance;
+private double totalCourseCosts = 0;
 private String uniqueID;
-private String coursesEnrolled;
+private String coursesEnrolled = "";
 private static int costOfCourse = 600;
 private static int id = 1000;
 // Constructors for Student : Prompt user to enter a name and year
@@ -19,7 +19,9 @@ public Student() {
 	this.lastname = in.nextLine();
 	System.out.println("Enter Year of Study:\n(1) for 1st Year\n(2)for 2nd Year\n(3) for 3rd Year\n(4) for 4th Year \n(5) for 5th Year\n(6) for Any other option eg. PostGrad/ Masters/Doctorate");
 	this.year= in.nextInt();
-	in.close();
+	in.nextLine();
+	//Closing scanners caused issues. So currently commented out
+	//in.close();
 	setID();
 }
 
@@ -33,7 +35,25 @@ private void setID() {
 // Set student balance
 
 // Enroll in courses
-
+public void enroll() {
+	//Create a loop with an exit option (Q)
+	do {
+		System.out.println("Enter Course to enroll, or 'Q' to quit: ");
+		Scanner enroll = new Scanner(System.in);
+		enroll.useDelimiter("\\n");
+		String course = enroll.nextLine();
+		if (!course.equalsIgnoreCase("Q")) {
+			coursesEnrolled = coursesEnrolled+"\n"+course;
+			totalCourseCosts = totalCourseCosts + costOfCourse;
+		}
+		else {break;}
+	}while(1 != 0);
+	
+	//Print it out
+	System.out.println("Enrolled in: "+coursesEnrolled);
+	System.out.println("Tuition for these courses will cost: £"+totalCourseCosts);
+	//enroll.close();
+}
 // Pay tuition
 
 // Show Status of student

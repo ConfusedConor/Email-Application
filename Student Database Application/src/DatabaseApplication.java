@@ -13,7 +13,7 @@
  *				*English 101
  *				*Chemistry 101
  *				*Comp.Science 101
- *		*Each course costs $600 to enroll
+ *		*Each course costs £600 to enroll
  *		*The student should be able to view their balance and pay the tuition
  *		*To see the status of the student we should see their name, ID, courses enrolled & balance
  */
@@ -27,8 +27,7 @@ public class DatabaseApplication {
 		
 		// Create n number of students
 		Student student1 = new Student();
-		System.out.println(student1.showStudent());
-		
+		student1.enroll();
 		
 	}
 
