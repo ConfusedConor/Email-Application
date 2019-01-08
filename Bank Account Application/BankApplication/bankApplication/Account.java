@@ -1,6 +1,5 @@
 package bankApplication;
 
-import java.security.SecureRandom;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,7 +13,7 @@ import java.util.Scanner;
 	 * 
 	 */
 
-public class Account implements BaseRate {
+public abstract class Account implements BaseRate {
 private String firstName;
 private String surname;
 private double balance;
@@ -24,7 +23,9 @@ private String socialSecurity;
 /*Could have also been an integer, but seeing as it doesnt require maths
  *  this works just fine, and allows us to use it as SSN or National Insurance.
  */
-private String accountNumber = "";								
+protected String accountNumber = "";	
+private double interest;
+private double baseRate;
 
 	// Constructor to set base properties and initialise account
 public Account() {
@@ -35,13 +36,14 @@ public Account() {
 	surname = in.next();
 	System.out.print("Please enter " + firstName + " " + surname + "'s Social Security Number : " );
 	socialSecurity = in.next();
-	System.out.print("What is the opening deposit? : ");
+	System.out.print("What is the opening deposit? : £");
 	initialDeposit = in.nextDouble();
 	balance = initialDeposit;
 	//Call accountNumber Generator
 	generateAccountNum();
-	//Print out
-	System.out.println(firstName+ " "+ surname+" "+ socialSecurity+ " " + balance + " "+ accountNumber );
+	//get BaseRate
+	
+
 }
 
 	// Account number generator
@@ -58,5 +60,10 @@ private void generateAccountNum() {
 
 }
 	// List methods common to both account types
-
+	public String accountInfo() {
+		return "Name: " + firstName + " " + surname +
+				"\nSocial Security: " + socialSecurity +
+				"\nAccount Number: " + accountNumber +
+				"\nBalance: £" + balance;
+	}
 }
