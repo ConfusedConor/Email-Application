@@ -19,4 +19,9 @@ package bankApplication;
  */
 public class BankApplication {
 
+	public static void main(String[] args) {
+		Account account = new Account();
+
+	}
+
 }

@@ -6,6 +6,7 @@ public class CurrentAccount extends Account {
 	 * Pin
 	 * 2 as first digit of Account number
 	 * 15% of base rate
+	 * 
 	 */
 	
 	
