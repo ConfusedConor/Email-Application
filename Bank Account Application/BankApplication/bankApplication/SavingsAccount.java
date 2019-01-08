@@ -10,6 +10,7 @@ public class SavingsAccount extends Account{
 		
 		
 		// Constructor to initialise a savings account properties
-		
+		 public SavingsAccount() {
+		 }
 		// List of any methods specific to savings account
 }
