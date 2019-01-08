@@ -1,3 +1,4 @@
+package bankApplication;
 /* For this application I will be taking the role of a back-end Dev who has been
  * tasked with creating an application to handle new customer bank account requests
  * The application should: 
