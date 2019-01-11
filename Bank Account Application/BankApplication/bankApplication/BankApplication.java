@@ -1,4 +1,7 @@
 package bankApplication;
+
+import java.util.List;
+
 /* For this application I will be taking the role of a back-end Dev who has been
  * tasked with creating an application to handle new customer bank account requests
  * The application should: 
@@ -20,13 +23,20 @@ package bankApplication;
 public class BankApplication {
 
 	public static void main(String[] args) {
-		CurrentAccount account1 = new CurrentAccount("Richard White", 200.5, "50302334");
-		SavingsAccount account2 = new SavingsAccount("James Smith", 1000.0, "34453445");
-		account1.showInfo();
-		account2.showInfo();
-		
+//		CurrentAccount account1 = new CurrentAccount("Richard White", 200.5, "50302334");
+//		SavingsAccount account2 = new SavingsAccount("James Smith", 1000.0, "34453445");
+//		account1.showInfo();
+//		account2.showInfo();
+//		
 		//Read CSV file and create new accounts
-
+		String file = "D:\\Dev Workspaces\\Personal-Projects-Java\\Bank Account Application\\NewBankAccounts.csv";
+		List<String[]> newCustomers = Utilities.CSV.read(file);
+		for (String[] customer : newCustomers) {
+			System.out.println("New Accounts:");
+			System.out.println(customer[0]);
+			System.out.println(customer[1]);
+			System.out.println(customer[2]);
+		}
 	}
 
 }

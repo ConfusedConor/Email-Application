@@ -13,7 +13,7 @@ package bankApplication;
 public abstract class Account implements BaseRate {
 	private String name;
 	private Double balance;
-	static Integer uniqueNum = 10000;
+	private static Integer uniqueNum = 10000;
 	private String socialSecurity;
 	/*
 	 * Could have also been an integer, but seeing as it doesnt require maths this
@@ -77,4 +77,25 @@ public abstract class Account implements BaseRate {
 	public void printBalance() {
 		System.out.println("Your balance is now £"+balance);
 	}
+	
+	//Any additional Getters & Setters that may be required
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getRate() {
+		return rate;
+	}
+
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
+	
 }
+
+
