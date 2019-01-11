@@ -22,6 +22,7 @@ public class BankApplication {
 	public static void main(String[] args) {
 		CurrentAccount account1 = new CurrentAccount();
 		
+		
 		//Read CSV file and create new accounts
 
 	}

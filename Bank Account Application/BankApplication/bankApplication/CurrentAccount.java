@@ -34,7 +34,6 @@ public class CurrentAccount extends Account {
 	}
 	
 	
-	
 	// List of any methods specific to checking account
 	public String currentAccountInfo() {
 		return accountInfo() + "\nDebit Card Number: " + debitCard + "\nP.I.N. : "+ debitCardPin;

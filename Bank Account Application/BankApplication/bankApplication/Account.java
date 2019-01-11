@@ -17,7 +17,7 @@ public abstract class Account implements BaseRate {
 	private String firstName;
 	private String surname;
 	private Double balance;
-	private Integer uniqueNum = 10000;
+	static Integer uniqueNum = 10000;
 	private Double initialDeposit;
 	private String socialSecurity;
 	/*
@@ -25,8 +25,6 @@ public abstract class Account implements BaseRate {
 	 * works just fine, and allows us to use it as SSN or National Insurance.
 	 */
 	protected String accountNumber = "";
-	private Double interest;
-	private Double baseRate;
 
 	// Constructor to set base properties and initialise account in interactive way
 	public Account() {
@@ -61,15 +59,19 @@ public abstract class Account implements BaseRate {
 	// Account number generator
 	private void generateAccountNum() {
 		// Last two digits of social Security number
-		char[] array = socialSecurity.toCharArray();
-		accountNumber = accountNumber + array[array.length - 2] + array[array.length - 1];
+			//Original Design of this section.. followed my new, cleaner method.
+//			char[] array = socialSecurity.toCharArray();
+//			accountNumber = accountNumber + array[array.length - 2] + array[array.length - 1];
+		accountNumber = accountNumber + socialSecurity.substring(socialSecurity.length() - 2, socialSecurity.length());
 		// Unique 5 digit number
 		accountNumber = accountNumber + uniqueNum;
 		uniqueNum++;
 		// Random 3 digit number
-		Random random = new Random();
-		accountNumber = accountNumber + random.nextInt(10) + random.nextInt(10) + random.nextInt(10);
-
+			//Original Method I used
+//			Random random = new Random();
+//			accountNumber = accountNumber + random.nextInt(10) + random.nextInt(10) + random.nextInt(10);
+			//Simplified method 1 line of code instead of two.
+		accountNumber = accountNumber + (int) (Math.random() * Math.pow(10, 3));
 	}
 
 	// List methods common to both account types
