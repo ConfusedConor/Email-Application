@@ -35,18 +35,46 @@ public abstract class Account implements BaseRate {
 	// Account number generator
 	private void generateAccountNum() {
 		// Last two digits of social Security number
-		accountNumber = accountNumber + socialSecurity.substring(socialSecurity.length() - 2, socialSecurity.length());
+		this.accountNumber = accountNumber + socialSecurity.substring(socialSecurity.length() - 2, socialSecurity.length());
 		// Unique 5 digit number
-		accountNumber = accountNumber + uniqueNum;
+		this.accountNumber = accountNumber + uniqueNum;
 		uniqueNum++;
 		// Random 3 digit number
-		accountNumber = accountNumber + (int) (Math.random() * Math.pow(10, 3));
+		this.accountNumber = accountNumber + (int) (Math.random() * Math.pow(10, 3));
 	}
-
+	
+	// Method used in child classes to set interest rate
+	public abstract void setRate();
+	
+	//Method to compound Interest
+	public void compound() {
+		double accruedInterest = balance * (rate/100);
+		System.out.println("Accrued interest: £" + accruedInterest);
+		balance = balance + accruedInterest;
+	}
+	
 	// List methods common to both account types
 	public void showInfo() {
 		System.out.println( "Name: " +name + "\nSocial Security: " + socialSecurity + "\nAccount Number: "
 				+ accountNumber + "\nBalance: £" + balance);
 	}
-	public abstract void setRate();
+	
+	public void deposit(double amount) {
+		balance = balance + amount;
+		System.out.println("Depositing £"+ amount);
+	}
+	
+	public void withdraw(double amount) {
+		balance = balance - amount;
+		System.out.println("Withdrawing £"+ amount);
+	}
+	
+	public void transfer(String toWhere, double amount) {
+		balance = balance - amount;
+		System.out.println("Transferring £"+ amount + " to " + toWhere);
+	}
+	
+	public void printBalance() {
+		System.out.println("Your balance is now £"+balance);
+	}
 }
