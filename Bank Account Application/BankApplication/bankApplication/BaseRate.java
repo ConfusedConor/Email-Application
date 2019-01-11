@@ -1,10 +1,8 @@
 package bankApplication;
 
 public interface BaseRate {
-	static double baseRate = 1.0;
-	
-
-	public static double getBaseRate(){
-		return baseRate;
+	// A method that returns the base rate
+	default double getBaseRate() {
+		return 2.5;
 	}
 }

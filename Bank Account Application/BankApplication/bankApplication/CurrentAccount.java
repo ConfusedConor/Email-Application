@@ -1,7 +1,5 @@
 package bankApplication;
 
-import java.util.Random;
-
 public class CurrentAccount extends Account {
 	// List of properties specific to a current account
 	/*
@@ -11,23 +9,15 @@ public class CurrentAccount extends Account {
 	 * 15% of base rate
 	 * 
 	 */
-	private String debitCard;
-	private String debitCardPin;
-	private String debitCardBase= "0000-0000-";
-	
+	private Integer debitCard;
+	private Integer debitCardPin;
 	
 	// Constructor to initialise a checking account properties interactively
 	public CurrentAccount(String name, Double initialDeposit, String socialSecurity) {
 		super(name, initialDeposit, socialSecurity);
 		//Add 2 ad first digit of account number
 		accountNumber = 2 + accountNumber;
-		
-		//Generate debit card code
-		Random random = new Random();
-		debitCard = debitCardBase + random.nextInt(10) + random.nextInt(10) +random.nextInt(10) + random.nextInt(10) + "-" +
-				random.nextInt(10) + random.nextInt(10) +random.nextInt(10) + random.nextInt(10);
-		//Generate pin
-		debitCardPin = "" + random.nextInt(10) + random.nextInt(10) + random.nextInt(10) + random.nextInt(10);
+		setDebitCard();
 	}
 	
 	
@@ -40,4 +30,14 @@ public class CurrentAccount extends Account {
 		 "********");
 	}
 	
+	private void setDebitCard() {
+		//Generate debit card code
+		debitCard = (int) (Math.random()*Math.pow(10, 12));
+		//Generate pin
+		debitCardPin = (int) (Math.random()+Math.pow(10, 4));
+	}
+	@Override
+	public void setRate() {
+		rate = getBaseRate()*0.15;
+	}
 }

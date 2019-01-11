@@ -20,6 +20,7 @@ public abstract class Account implements BaseRate {
 	 * works just fine, and allows us to use it as SSN or National Insurance.
 	 */
 	protected String accountNumber = "";
+	protected double rate;
 
 	// Account Constructor of common features
 	public Account(String name, Double initialDeposit, String socialSecurity) {
@@ -28,6 +29,7 @@ public abstract class Account implements BaseRate {
 		this.balance = initialDeposit;
 		this.socialSecurity = socialSecurity;
 		generateAccountNum();
+		setRate();
 	}
 
 	// Account number generator
@@ -46,5 +48,5 @@ public abstract class Account implements BaseRate {
 		System.out.println( "Name: " +name + "\nSocial Security: " + socialSecurity + "\nAccount Number: "
 				+ accountNumber + "\nBalance: £" + balance);
 	}
-	
+	public abstract void setRate();
 }

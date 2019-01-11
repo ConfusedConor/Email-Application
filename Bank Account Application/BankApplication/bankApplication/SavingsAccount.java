@@ -35,4 +35,8 @@ public class SavingsAccount extends Account{
 				 "\nEntry Code: "+ depositPin + 
 				 "********");
 			}
+		@Override
+		public void setRate() {
+			rate = getBaseRate() - 0.25;			
+		}
 }
