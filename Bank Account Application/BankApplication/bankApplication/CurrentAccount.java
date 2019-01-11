@@ -13,13 +13,12 @@ public class CurrentAccount extends Account {
 	 */
 	private String debitCard;
 	private String debitCardPin;
-	private Double interest;
 	private String debitCardBase= "0000-0000-";
 	
 	
 	// Constructor to initialise a checking account properties interactively
-	public CurrentAccount(String firstName, String surname, Double initialDeposit, String socialSecurity) {
-		super(firstName, surname, initialDeposit, socialSecurity);
+	public CurrentAccount(String name, Double initialDeposit, String socialSecurity) {
+		super(name, initialDeposit, socialSecurity);
 		//Add 2 ad first digit of account number
 		accountNumber = 2 + accountNumber;
 		
@@ -29,14 +28,16 @@ public class CurrentAccount extends Account {
 				random.nextInt(10) + random.nextInt(10) +random.nextInt(10) + random.nextInt(10);
 		//Generate pin
 		debitCardPin = "" + random.nextInt(10) + random.nextInt(10) + random.nextInt(10) + random.nextInt(10);
-		//Print out
-		System.out.println(currentAccountInfo());
 	}
 	
 	
 	// List of any methods specific to checking account
-	public String currentAccountInfo() {
-		return accountInfo() + "\nDebit Card Number: " + debitCard + "\nP.I.N. : "+ debitCardPin;
+	public void showInfo() {
+		super.showInfo();
+		System.out.println("Account Type: Current Account"
+		 + "\nDebit Card Number: " + debitCard + 
+		 "\nP.I.N. : "+ debitCardPin  + 
+		 "********");
 	}
 	
 }

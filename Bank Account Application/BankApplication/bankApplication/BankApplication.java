@@ -20,8 +20,10 @@ package bankApplication;
 public class BankApplication {
 
 	public static void main(String[] args) {
-		CurrentAccount account1 = new CurrentAccount();
-		
+		CurrentAccount account1 = new CurrentAccount("Richard White", 200.5, "50302334");
+		SavingsAccount account2 = new SavingsAccount("James Smith", 1000.0, "34453445");
+		account1.showInfo();
+		account2.showInfo();
 		
 		//Read CSV file and create new accounts
 
