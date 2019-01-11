@@ -1,5 +1,6 @@
 package bankApplication;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /* For this application I will be taking the role of a back-end Dev who has been
@@ -23,19 +24,32 @@ import java.util.List;
 public class BankApplication {
 
 	public static void main(String[] args) {
-//		CurrentAccount account1 = new CurrentAccount("Richard White", 200.5, "50302334");
-//		SavingsAccount account2 = new SavingsAccount("James Smith", 1000.0, "34453445");
-//		account1.showInfo();
-//		account2.showInfo();
-//		
+		List<Account> accounts =new LinkedList<Account>();
+		
 		//Read CSV file and create new accounts
 		String file = "D:\\Dev Workspaces\\Personal-Projects-Java\\Bank Account Application\\NewBankAccounts.csv";
 		List<String[]> newCustomers = Utilities.CSV.read(file);
 		for (String[] customer : newCustomers) {
-			System.out.println("New Accounts:");
-			System.out.println(customer[0]);
-			System.out.println(customer[1]);
-			System.out.println(customer[2]);
+			String name = customer[0];
+			String socialSecurityNumber = customer[1];
+			String accountType= customer[2];
+			double initDeposit = Double.parseDouble(customer[3]);
+			if (accountType.equals("Savings")){
+				accounts.add(new SavingsAccount(name, initDeposit, socialSecurityNumber));
+			}
+			else if (accountType.equals("Checking")) {
+				accounts.add(new CurrentAccount(name, initDeposit, socialSecurityNumber));
+			}
+			else {
+				System.out.println("Error Reading Account type");
+			}
+		}
+		
+	//	accounts.get(5).showInfo();
+		
+		for (Account acc:accounts) {
+			acc.showInfo();
+			System.out.println("********************");
 		}
 	}
 
